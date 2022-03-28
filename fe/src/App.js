@@ -1,23 +1,23 @@
 import './App.css';
 import SockJS from 'sockjs-client'
 import Stomp from 'stomp-websocket'
-import Stom from '@stomp/stompjs'
 
 function App() {
-    const connet = () => {
-        // var ws = new SockJS("localhost:8080/replyEcho?bno=1234")
-        var ws = new SockJS("ws://localhost:8080/replyEcho?bno=1234");
-        var stompClient = Stomp.over(ws)
 
-        stompClient.connect({}, function (fame) {
-            // setConnect(true);
-            console.log('Conneted: '+ fame);
+    function connect() {
+        var socket = new SockJS('/gs-guide-websocket');
+        var stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
             stompClient.subscribe('/topic/greetings', function (greeting) {
-                console.log(JSON.parse(greeting.body).content);
-            })
-        })
+                showGreeting(JSON.parse(greeting.body).content);
+            });
+        });
     }
 
+    function showGreeting(message) {
+        console.log("<tr><td>" + message + "</td></tr>");
+    }
 
   return (
       <>
@@ -25,7 +25,6 @@ function App() {
             Hello world!
           </h1>
 
-          <button onClick={wsButtonClick}>TestBUTTON</button>
       </>
   );
 }
