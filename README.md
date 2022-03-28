@@ -1,7 +1,7 @@
 # MusicHarmony_webRTC_practice
 
 의존성 목록
-React       : react, StompJS, net(StompJS가 의존), SockJS, Zustand  
+React       : react, StompJS, net(StompJS가 의존), SockJS, Zustand <br/>
 SpringBoot  : starter-web, starter-websocket, lombok, starter-Oauth2-client(현재 주석처리)
 
 ## 22.03.28
