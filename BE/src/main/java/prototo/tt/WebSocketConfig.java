@@ -19,7 +19,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-
-        registry.addEndpoint("/gs-guide-webscoket").withSockJS();
+        //setAllowedOriginPatterns("*") <- CORS 회피 코드. 스프링 Stomp 소켓 통신 시, 여기서 설정해줘야함 중요
+        registry.addEndpoint("/gs-guide-websocket").setAllowedOriginPatterns("*").withSockJS();
     }
 }
