@@ -5,6 +5,7 @@ import Stomp from 'stomp-websocket'
 function App() {
     var stompClient = null;
 
+
     function connect() {
         var socket = new SockJS('http://localhost:8080/gs-guide-websocket');
         stompClient = Stomp.over(socket);
